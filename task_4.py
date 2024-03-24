@@ -8,7 +8,7 @@ def input_error(func):
             return "Enter the argument for the command"
         except KeyError:
             return "Enter correct user name"
-        
+           
     return inner
 
 @input_error
@@ -32,7 +32,7 @@ def change_contact(args, contacts):
 
 @input_error
 def show_phone(args, contacts):
-    name = args
+    name = args[0]
     phone = contacts[name]
     return f"{name}`s phone {phone}"
 
@@ -58,7 +58,7 @@ def main():
         elif command == "change":
             print(change_contact(args, contacts))
         elif command == "phone":
-            print(show_phone(args[0], contacts))
+            print(show_phone(args, contacts))
         elif command == "all":
             print(show_all(contacts))
         else:
